@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TechProj Karl Diomaro</string>
+    <string name="title_activity_pagination">Pagination</string>
+    <string name="please_check_network_connection">Please check your network connection</string>
+</resources>
