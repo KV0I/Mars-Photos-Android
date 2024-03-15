@@ -29,7 +29,7 @@ interface MarsRoverPhotosApi {
 //    @GET("rovers/curiosity/photos?sol=1000&api_key=$API_KEY")
     suspend fun getLatestPhotos(
         @Path("rover") rover: String,
-        @Query("page") page: Int? = null,
+        @Query("page") page: Int? = 1,
         @Query("api_key") apiKey: String = API_KEY
     ): MarsRoverPhotosApiModel
 
