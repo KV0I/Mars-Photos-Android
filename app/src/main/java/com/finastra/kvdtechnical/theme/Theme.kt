@@ -3,12 +3,16 @@ package com.finastra.kvdtechnical.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 
 private val DarkColorPalette = darkColorScheme(
     primary = Magenta400,
     background = Purple900,
     surface = Purple800,
+    surfaceTint = Magenta700,
+    surfaceBright = Magenta700
+
 
 
 
@@ -16,7 +20,11 @@ private val DarkColorPalette = darkColorScheme(
 )
 
 private val LightColorPalette = lightColorScheme(
-    primary = Green700
+    primary = Magenta900,
+    surfaceTint = Color.Transparent,
+    surface = Color.White,
+    surfaceBright = Purple700
+
 
     /* Other default colors to override
     background = Color.White,
@@ -37,6 +45,7 @@ fun TechProjKarlDiomaroTheme(
         DarkColorPalette
     } else {
         LightColorPalette
+//        DarkColorPalette
     }
 
     MaterialTheme(

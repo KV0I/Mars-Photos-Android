@@ -33,7 +33,7 @@ interface PhotosDao {
     fun sortByDate(): Flow<List<PhotosEntity>?>
 
 //    sortById
-    @Query("select * from PhotosEntity order by id asc")
+    @Query("select * from PhotosEntity order by id desc")
     fun sortById(): Flow<List<PhotosEntity>?>
 
 }

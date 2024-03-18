@@ -3,12 +3,9 @@ package com.finastra.kvdtechnical.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.finastra.kvdtechnical.domain.Photos
-import com.finastra.kvdtechnical.network.model.Camera
-import com.finastra.kvdtechnical.network.model.Rover
 
 @Entity
 data class PhotosEntity constructor(
-    @PrimaryKey
     val id: Int,
     val sol: Int,
     val camera_full_name: String,
@@ -16,8 +13,12 @@ data class PhotosEntity constructor(
     val img_src: String,
     val earth_date: String,
 //    val rover: Rover,
-    val roverName: String
-)
+    val roverName: String,
+
+) {
+    @PrimaryKey(autoGenerate = true)
+    var photoId: Int = 0
+}
 
 fun List<PhotosEntity>.asDomainModel(): List<Photos> {
     return map {

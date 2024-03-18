@@ -9,8 +9,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.finastra.kvdtechnical.components.LoadingIndicator
 import com.finastra.kvdtechnical.components.NoNetwork
-import com.finastra.kvdtechnical.ui.photos.LoadingIndicator
 import com.finastra.kvdtechnical.ui.photos.PhotosScreen
 import com.finastra.kvdtechnical.ui.photos.PhotosViewModel
 import com.finastra.kvdtechnical.ui.photos.STATE
@@ -27,29 +27,31 @@ fun Index() {
 //        produce a hello world
         composable("listPage") {
             val viewModel = hiltViewModel<PhotosViewModel>()
-            val state = viewModel.state
             val onEvent = viewModel::onEvent
             val photos = viewModel.uiState.photos
-            val lastPicReached = viewModel.lastPicReached
+            val selectedDate = viewModel.selectedDate
             PhotosScreen(
-                navController = navController,
-                state = state,
                 photos = photos,
-                viewModel = viewModel,
+                tabList = viewModel.roverList,
                 onEvent = onEvent,
-                lastPicReached = viewModel.lastPicReached
+                isRefreshing = viewModel.isRefreshing,
+                lastPicReached = viewModel.lastPicReached,
+                selectedDate = selectedDate,
+                state = viewModel.state,
             )
-            if (state == STATE.LOADING) {
+            if (viewModel.state == STATE.LOADING) {
                 timber.log.Timber.tag("PhotosScreen").d("Loading...")
                 LoadingIndicator()
 //        onEvent(PhotoEvent.LoadPhotos)
-            } else if (isInternetAvailable(LocalContext.current).not() && photos.isEmpty()){
+            }
+            if (isInternetAvailable(LocalContext.current).not() && photos.isEmpty()){
                 // Offline
                 Timber.tag("PhotosScreen").d("Offline...")
                 NoNetwork()
-            } else if (viewModel.errorMessage.isNotEmpty()) {
+            } else if (viewModel.uiState.errorMessage.isNotEmpty()) {
                 // Error
-                println("Error...")
+//                TODO: Error handling
+                Timber.tag("PhotosScreen").d("Error...")
             }
         }
 
