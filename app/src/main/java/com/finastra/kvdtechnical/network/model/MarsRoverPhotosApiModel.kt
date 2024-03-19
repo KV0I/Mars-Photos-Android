@@ -54,17 +54,20 @@ data class CameraX(
     val name: String
 )
 
-fun MarsRoverPhotosApiModel.asDatabaseModel(): List<PhotosEntity>? {
+fun MarsRoverPhotosApiModel.asDatabaseModel(): List<PhotosEntity> {
 //    use latest_photos if it exist, else use photos
     val photos = latest_photos ?: photos
-    return photos?.map {
-        PhotosEntity(
-            id = it.id,
-            camera_full_name = it.camera.full_name,
-            roverName = it.rover.name,
-            sol = it.sol,
-            img_src = it.img_src,
-            earth_date = it.earth_date
-        )
+    if (photos != null) {
+        return photos.map {
+            PhotosEntity(
+                id = it.id,
+                camera_full_name = it.camera.full_name,
+                roverName = it.rover.name,
+                sol = it.sol,
+                img_src = it.img_src,
+                earth_date = it.earth_date
+            )
+        }
     }
+    return emptyList()
 }

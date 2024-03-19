@@ -24,6 +24,17 @@ interface PhotosDao {
     @Query("delete from PhotosEntity")
     fun deleteAll()
 
+//    get photos by rover
+    @Query("select * from PhotosEntity where roverName = :rover")
+    fun getPhotosByRover(rover: String): Flow<List<PhotosEntity>?>
+
+//    sortByDate
+    @Query("select * from PhotosEntity order by earth_date asc")
+    fun sortByDate(): Flow<List<PhotosEntity>?>
+
+//    sortById
+    @Query("select * from PhotosEntity order by id desc")
+    fun sortById(): Flow<List<PhotosEntity>?>
 
 }
 
