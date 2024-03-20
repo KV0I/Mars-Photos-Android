@@ -56,24 +56,43 @@ dependencies {
     implementation (libs.androidx.ui)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material)
-    implementation ("androidx.compose.ui:ui-tooling-preview")
+    implementation (libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.navigation.common.ktx)
     implementation(libs.androidx.navigation.compose)
-    debugImplementation ("androidx.compose.ui:ui-tooling")
+    debugImplementation (libs.androidx.ui.tooling)
 
     implementation (libs.androidx.lifecycle.runtime.ktx)
     implementation (libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
     implementation (libs.androidx.hilt.navigation.compose)
     implementation (libs.kotlinx.coroutines.core)
+//    testInstrumentationRunner("")
+
+//    testing
+    implementation(libs.androidx.core)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    debugImplementation(libs.androidx.ui.test.manifest.v17)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.mockito.kotlin)
+    testImplementation(libs.hamcrest.all)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.truth)
+    testImplementation(libs.hilt.android.testing)
+    debugImplementation(libs.androidx.fragment.testing)
+
+
+    // ui
+
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+
+
 
     //==================== Networking ====================
 
